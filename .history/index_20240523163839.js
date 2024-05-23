@@ -1,5 +1,6 @@
 import { PORT, mongoDBURL } from './config.js';
 import mongoose from 'mongoose';
+import app from './src/app.js';
 
 import express, { request, response } from 'express';
 import carRoutes from './routes/carRoutes.js';
