@@ -1,6 +1,5 @@
 import { PORT, mongoDBURL } from './config.js';
 import mongoose from 'mongoose';
-import app from './functions/app.js';
 
 /*
 import express, { request, response } from 'express';

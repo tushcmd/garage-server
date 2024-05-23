@@ -1,13 +1,10 @@
-import { PORT, mongoDBURL } from './config.js';
-import mongoose from 'mongoose';
-import app from './functions/app.js';
-
-/*
 import express, { request, response } from 'express';
-import carRoutes from './routes/carRoutes.js';
+import carRoutes from '../routes/carRoutes'
 import cors from 'cors';
 import dotenv from 'dotenv';
 dotenv.config();
+
+import serverless from "serverless-http";
 
 const app = express();
 
@@ -30,18 +27,7 @@ app.get('/', (request, response) => {
 
 app.use('/cars', carRoutes);
 
-*/
+export const handler = serverless(api);
 
-mongoose
-  .connect(mongoDBURL)
-  .then(() => {
-    console.log(`App connected to database`);
-    app.listen(PORT, () => {
-      console.log(`App is listening to: ${PORT}`);
-    });
-  })
-  .catch((error) => {
-    console.log(error);
-  });
 
-//export default app;
+export default app;
