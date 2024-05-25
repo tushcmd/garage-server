@@ -1,3 +1,6 @@
+import { PORT, mongoDBURL } from './config.js';
+import mongoose from 'mongoose';
+
 import express, { request, response } from 'express';
 import carRoutes from './routes/carRoutes.js';
 import cors from 'cors';
@@ -25,6 +28,14 @@ app.get('/', (request, response) => {
 
 app.use('/cars', carRoutes);
 
-
-
-export default app;
+mongoose
+  .connect(mongoDBURL)
+  .then(() => {
+    console.log(`App connected to database`);
+    app.listen(PORT, () => {
+      console.log(`App is listening to: ${PORT}`);
+    });
+  })
+  .catch((error) => {
+    console.log(error);
+  });
